@@ -9,6 +9,7 @@ class Solution(object):
     '''
     complexity O(n)
     '''
+
     def lowestCommonAncestor(self, root, p, q):
         """
         :type root: TreeNode
@@ -16,9 +17,11 @@ class Solution(object):
         :type q: TreeNode
         :rtype: TreeNode
         """
-        if p.val < root.val > q.val:
-            return self.lowestCommonAncestor(root.left, p, q)
-        if p.val > root.val < q.val:
-            return self.lowestCommonAncestor(root.right, p, q)
+        if root == None or root == p or root == q:
+            return root
 
+        left = self.lowestCommonAncestor(root.left, p, q)
+        right = self.lowestCommonAncestor(root.right, p, q)
+        if left == None: return right
+        if right == None: return left
         return root
