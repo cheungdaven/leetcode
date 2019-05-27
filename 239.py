@@ -17,3 +17,4 @@ class Solution(object):
                 res.append(nums[window[0]])
 
         return res
+
